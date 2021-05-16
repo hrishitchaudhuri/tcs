@@ -1,0 +1,8 @@
+Q. Suppose f is any function that depends on all its bits; in other words, for each bit position i
+there is an input x such that f(x) != f(xi). Show that s(f) = Ω(log n).
+
+A. Since f depends on all its bits, each of these bits MUST be queried by the decision tree deciding
+f. However, the shape of the tree will depend on the sensitivity of f, since, for the decision tree 
+to correctly determine the unique output of the function given an input x, it MUST query all the 
+sensitive bits of x. Therefore, the ideal construction gives us a balanced binary decision tree, under
+the lower-bound assumption of S, causing each input to have a maximum sensitivity of log n. 

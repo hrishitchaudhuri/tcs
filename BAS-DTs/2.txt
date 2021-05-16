@@ -1,0 +1,11 @@
+Q. For every k ∈ N, let fk be the AND-OR function on strings of length 2^k (see Example 12.2). Prove
+that D(fk) = 2^k.
+
+A. The decision-tree is capable of evaluating the output deterministically based on each input bit. In
+the worst case, it has to evaluate every single bit before it can decide the output. This can be proven
+using an adversarial argument to generate the string that will require all its bits decided before the 
+tree can provide a solution. 
+
+This generation can be done trivially. For instance, consider f2, consisting of 1 AND level and 1 OR level. 
+In this case, the string 0100 will require all four bits to be processed, giving a decision tree complexity
+of 4.
