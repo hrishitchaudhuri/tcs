@@ -1,0 +1,15 @@
+1. Provide a DNF construction for a function f such that the maximum term size is equal to the 1-certificate
+complexity for f. 
+A. Let S be the set of all 1-certificates of f. Mark each bit position as xi. If, for a particular certificate, 
+xi = 0, then mark it as NOT xi, else leave it as xi. Now construct a DNF by AND-ing the variables in each certificate
+according to the above scheme, and OR-ing all these terms to form a DNF formula f. The maximum term size in this
+case will be the size of the 1-certificate complexity. 
+
+
+2. Explain the DNF algorithm for proving that D(f) is bounded by C^2(f).
+A. 
+
+
+3. Provide decision trees for each of the examples given in B&A.
+
+4. Complete the exercises provided in DT.
