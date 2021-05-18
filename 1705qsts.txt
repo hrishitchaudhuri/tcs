@@ -7,7 +7,22 @@ case will be the size of the 1-certificate complexity.
 
 
 2. Explain the DNF algorithm for proving that D(f) is bounded by C^2(f).
-A. 
+A. Let f = T1 OR T2 OR ... Tk be the DNF formula for f for which the maximum term size is C1, using the construction
+described above. Thus, for each term Ti in the DNF formula, we use the following method of constructing a decision tree:
+
+-> If T1 has a total of l variables, then the part of the decision tree corresponding to T1 will have exactly l levels, 
+such that at each level j, the variable xj in T1 is queried. The path satisfying T1 will end at a leaf labelled 1. 
+For every other assignment to the sequence of variables, the leaves will lead to the subtree that is computed recursively
+for T2...Tk. (Each variable xj in T1 MUST be queried). 
+
+-> We continue constructing the tree for the remaining Ti. We know that each stage in this construction adds at most C1
+levels, since the maximum term size is C1. We will make use of the observation that, since every 1-certificate MUST share
+at least one bit-position with a 0-certificate, every stage of this construction must have queried at least one variable 
+for each 0-certificate of f. Thus, since the 0-certificate complexity decreases by 1 at each stage of the construction, 
+the construction can only have a maximum of C0 stages. 
+
+-> This implies that the depth of the tree, and therefore the decision tree complexity, must have an upper bound of C0 x C1, 
+which leads to an upper bound of C^2.
 
 
 3. Provide decision trees for each of the examples given in B&A.
