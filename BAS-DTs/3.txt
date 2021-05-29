@@ -26,4 +26,3 @@ OR block. This implies that every OR block outputs zero but has to evaluate all 
 block now has to wait for all the OR blocks to evaluate, since none of them output 0. This implies that
 in the worst case, the decision tree must evaluate all bits, giving D(f) = n. 
 
-We observe the following distribution on the possible inputs: 

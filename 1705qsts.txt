@@ -26,5 +26,12 @@ which leads to an upper bound of C^2.
 
 
 3. Provide decision trees for each of the examples given in B&A.
+A. 
+(1) OR := For an n-bit OR function, construct a DT as follows. Start with the root corresponding to querying bit x1. If this 
+bit is 0, the tree stops and outputs 0; else, it moves to the node querying bit x2, constructed similarly. Only the last node,
+bit xn is designed as an identity function: if this bit is 0, output 0; else, output 1. 
+
+(2) GRAPH CONN := 
+
 
 4. Complete the exercises provided in DT.

@@ -1,0 +1,103 @@
+f(1, 1) = 2
+f(m + 1, n) = f(m, n) + 2(m + n)
+f(m, n + 1) = f(m, n) + 2(m + n - 1)
+
+PROP: \forall m, n \ge 1: f(m, n) = (m + n)**2 - (m + n) - 2(n - 1)
+
+=================================
+METHOD 1: Double/Nested Induction
+=================================
+
+Outline:
+PROP holds for m = 1, n = 1.
+If PROP holds for f(m, 1) then PROP holds \forall f(m + 1, 1)
+If PROP holds for f(m, n) then PROP holds \forall f(m, n + 1)
+
+Proof:
+It is trivial to show that PROP holds for f(1, 1).
+
+Assuming that f(m, 1) = (m + 1) ** 2 - (m + 1) \forall m \ge 1 [ By PROP ]
+	f(m + 1, 1) = f(m, 1) + 2(m + 1)
+	f(m + 1, 1) = (m + 1) ** 2 - (m + 1) + 2(m + 1)
+		    = m**2 + 1 + 2m - m - 1 + 2m + 2
+		    = m**2 + 3m + 2
+
+	Note that, 
+	  (m + 1 + 1)**2 - (m + 1 + 1) - 2(1 - 1)
+	= m**2 + 4 + 4m - m - 2
+	= m**2 + 3m + 2
+
+	Therefore, 
+	f(m + 1, 1) = ((m + 1) + 1)**2 - ((m + 1) + 1) - 2(1 - 1)
+	
+which implies that PROP is true f(m + 1, 1) if PROP is true for f(m, 1)
+\forall Nat m \ge 1.
+
+Assuming that PROP holds \forall m, n \ge 1, 
+	f(m, n) = (m + n)**2 - (m + n) - 2(n - 1)
+	f(m, n + 1) = f(m, n) + 2(m + n - 1)
+		    = (m + n)**2 - (m + n) - 2(n - 1) + 2(m + n - 1)
+		    = m**2 + n**2 + 2mn - m - n - 2n + 2 + 2m + 2n - 2
+		    = m**2 + n**2 + 2mn + m - n 
+
+	Note that, 
+	  (m + n + 1)**2 - (m + n + 1) - 2(n + 1 - 1)
+	= m**2 + n**2 + 1 + 2n + 2mn + 2m - m - n - 1 - 2n
+	= m**2 + n**2 + 2mn + m - n
+
+	Therefore, 
+	f(m, n + 1) = (m + (n + 1))**2 - (m + (n + 1)) - 2((n + 1) - 1)
+
+which implies that PROP is true for f(m, n + 1) if PROP is true for f(m, n)
+\forall Nat m, n \ge 1.
+
+Q.E.D.
+
+
+==========================
+METHOD 2: Folded Induction
+==========================
+
+Outline:
+PROP holds \forall Nat m, n \ge 1 s.t. (m + n) = 2.
+If PROP holds \forall Nat m, n \ge 1 s.t. (m + n) = k, then PROP holds
+\forall Nat m, n \ge 1 s.t. (m + n) = k + 1, where Nat k \ge 2.
+
+Proof:
+It is trivial to see that (m, n) = (1, 1) is the only pair in N x N satisfying (m + n) = 2.
+We already know that PROP holds for (1, 1).
+
+Assume that PROP holds \forall Nat m, n \ge 1 s.t. (m + n) = k. 
+Therefore, we need to show that PROP holds \forall (m + 1, n) and (m, n + 1).
+
+CASE 1: f(m + 1, n) = f(m, n) + 2(m + n)
+		    = (m + n)**2 - (m + n) - 2(n - 1) + 2(m + n)
+		    = m**2 + n**2 + 2mn - m - n - 2n + 2 + 2m + 2n
+		    = m**2 + n**2 + 2mn + m - n + 2
+
+	Note that, 
+	  (m + 1 + n)**2 - (m + 1 + n) - 2(n - 1)
+	= m**2 + n**2 + 1 + 2n + 2mn + 2m - m - n - 1 - 2n + 2
+	= m**2 + n**2 + 2mn + m - n + 2
+
+	implying that PROP holds for the case (m + 1, n) if it holds for (m, n).
+
+CASE 2: f(m, n + 1) = f(m, n) + 2(m + n - 1)
+		    = (m + n)**2 - (m + n) - 2(n - 1) + 2(m + n - 1)
+		    = m**2 + n**2 + 2mn - m - n - 2n + 2 + 2m + 2n - 2
+		    = m**2 + n**2 + 2mn + m - n 
+
+	Note that, 
+	  (m + n + 1)**2 - (m + n + 1) - 2(n + 1 - 1)
+	= m**2 + n**2 + 1 + 2n + 2mn + 2m - m - n - 1 - 2n
+	= m**2 + n**2 + 2mn + m - n
+
+	implying that PROP holds for the case (m, n + 1) if it holds for (m, n).
+
+Therefore, if PROP holds for all (m, n)  s.t. (m + n) = k, then it holds for all (m, n) 
+s.t. (m + n) = k + 1. 
+Inducing over k, we show that PROP holds \forall Nat k \ge 2, implying that PROP holds 
+\forall (m x n) in N x N, m, n \ge 1. 
+
+Q.E.D.
+
